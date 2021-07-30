@@ -1,10 +1,25 @@
 import React from 'react';
-import db from '../InitialData.json';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import todoActions from '../redux/todoActions';
 
 const TodoList = () => {
-  const items = db.map(({ id, todo }) => <li key={id}>{todo}</li>);
+  const db = useSelector(state => state.items);
+  const dispatch = useDispatch();
 
-  return <ul>{items}</ul>;
+  const handleClick = id => {
+    dispatch(todoActions.deleteTodo(id));
+  };
+  return (
+    <ul>
+      {db.map(({ id, todo }) => (
+        <li key={id}>
+          <p>{todo}</p>
+          <button onClick={() => handleClick(id)}>&#10006;</button>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default TodoList;
