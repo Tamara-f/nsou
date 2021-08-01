@@ -1,4 +1,4 @@
-import { addTodo } from './services/todoServices';
+import { addTodo } from '../services/todoServices';
 
 const TodoForm = ({ todo, setTodo }) => {
   const handleSubmit = async e => {
