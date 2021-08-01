@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
+import { addTodo } from './services/todoServices';
 
-const TodoForm = () => {
-  const [todo, setTodo] = useState('');
-
-  const handleSubmit = e => {
+const TodoForm = ({ todo, setTodo }) => {
+  const handleSubmit = async e => {
     e.preventDefault();
+    await addTodo(todo);
     setTodo('');
   };
 
   return (
     <>
+      <h2>Add new todo</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Create todo:
-          <input
-            type='text'
-            value={todo}
-            onChange={e => setTodo(e.target.value)}
-          />
-        </label>
+        <input
+          type='text'
+          value={todo}
+          onChange={e => setTodo(e.target.value)}
+        />
         <input type='submit' value='Submit' />
       </form>
     </>
