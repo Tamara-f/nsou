@@ -1,4 +1,5 @@
 import { addTodo } from '../services/todoServices';
+import { DebounceInput } from 'react-debounce-input';
 
 const TodoForm = ({ todo, setTodo }) => {
   const handleSubmit = async e => {
@@ -11,11 +12,15 @@ const TodoForm = ({ todo, setTodo }) => {
     <>
       <h2>Add new todo</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          value={todo}
+        <DebounceInput
+          minLength={2}
+          debounceTimeout={600}
           onChange={e => setTodo(e.target.value)}
+          value={todo}
         />
+
+        {/* <input type='text' value={todo} onChange={handleChange} /> */}
+
         <input type='submit' value='Submit' />
       </form>
     </>

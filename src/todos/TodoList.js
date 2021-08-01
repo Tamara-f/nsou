@@ -11,7 +11,7 @@ const TodoList = ({ todos, handleDelete }) => {
             </li>
           ))
         ) : (
-          <p>Create your first todo</p>
+          <p>Loading...</p>
         )}
       </ul>
     </>
