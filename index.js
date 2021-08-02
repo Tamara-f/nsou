@@ -13,11 +13,10 @@ app.use(cors());
 app.use('/api/todos', todoRoutes);
 
 //for static
-app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, 'build')));
-//for html
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+// //for html
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
 const port = process.env.PORT || 8080;

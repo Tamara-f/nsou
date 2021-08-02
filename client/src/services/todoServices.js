@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-const apiUrl =
-  'http://localhost:8080/' ||
-  'https://whispering-sea-47905.herokuapp.com/api/todos';
+const apiUrl = 'api/todos';
 
 export async function getTodos() {
   const { data } = await axios.get(apiUrl);
