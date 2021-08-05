@@ -10,7 +10,7 @@ module.exports = async () => {
       useUnifiedTopology: true
     };
     await mongoose.connect(
-      'mongodb+srv://admin:admin@goit.mfdap.mongodb.net/nsou?retryWrites=true',
+      process.env.DB_URI,
       options
     );
     console.log('Connected to database.');
